@@ -16,10 +16,14 @@ public class Main {
         Deque<Character> deque = new ArrayDeque<>();
 
         for (char bracket : input.toCharArray()) {
+            // if opening bracket
             if (BRACKETS.containsKey(bracket)) {
                 deque.push(bracket);
+            //if closing bracket
             } else if (BRACKETS.containsValue(bracket)) {
+                //if the stack is empty
                 if (deque.isEmpty()) return false;
+                // if the bracket doesnt close the existing bracket in the stack
                 if (BRACKETS.get(deque.pop()) != bracket) return false;
             }
         }
